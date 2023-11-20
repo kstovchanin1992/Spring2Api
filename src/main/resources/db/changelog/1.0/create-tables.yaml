@@ -1,0 +1,31 @@
+databaseChangeLog:
+  -  changeSet:
+       id: createTablePersons
+       author: Sergey
+       changes:
+         - createTable:
+             tableName: person
+             columns:
+               - column:
+                   name: id
+                   type: int
+                   autoIncrement: true
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: first_name
+                   type: varchar(100)
+               - column:
+                   name: last_name
+                   type: varchar(100)
+               - column:
+                   name: middle_name
+                   type: varchar(100)
+               - column:
+                   name: passport_number
+                   type: varchar(20)
+               - column:
+                   name: passport_series
+                   type: varchar(20)
+

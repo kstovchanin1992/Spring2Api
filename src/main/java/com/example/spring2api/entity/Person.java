@@ -1,13 +1,14 @@
 package com.example.spring2api.entity;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
-
 @Entity
 @Table(name = "person")
 @Getter
@@ -29,6 +30,5 @@ public class Person {
     private String passportNumber;
     @Column(name = "passport_series")
     private String passportSeries;
-
 }
 

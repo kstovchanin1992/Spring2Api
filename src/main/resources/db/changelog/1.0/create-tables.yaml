@@ -29,3 +29,4 @@ databaseChangeLog:
                    name: passport_series
                    type: varchar(20)
 
+

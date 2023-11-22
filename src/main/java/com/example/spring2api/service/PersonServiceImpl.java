@@ -4,14 +4,15 @@ import com.example.spring2api.dto.PersonDto;
 import com.example.spring2api.entity.Person;
 import com.example.spring2api.mapper.PersonMapper;
 import com.example.spring2api.repository.PersonRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class PersonServiceImpl implements PersonService{
+public class PersonServiceImpl implements PersonService {
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
 
@@ -26,7 +27,8 @@ public class PersonServiceImpl implements PersonService{
         Person person = personMapper.toPerson(personDTO);
         personRepository.save(person);
     }
-    @Transactional
+
+    @Transactional(readOnly = true)
     @Override
     public List<Person> getPersons(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);

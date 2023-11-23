@@ -1,9 +1,10 @@
-package com.example.spring2api.service;
+package com.example.spring2api.service.impl;
 
 import com.example.spring2api.dto.PersonDto;
 import com.example.spring2api.entity.Person;
 import com.example.spring2api.mapper.PersonMapper;
 import com.example.spring2api.repository.PersonRepository;
+import com.example.spring2api.service.PersonService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

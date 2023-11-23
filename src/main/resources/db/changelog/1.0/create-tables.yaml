@@ -29,14 +29,23 @@ databaseChangeLog:
                    name: passport_series
                    type: varchar(20)
   - changeSet:
-      id: makeMiddleNameNullable
+      id: modifyPersonTable20231125
       author: Sergey
       changes:
         - modifyDataType:
             tableName: person
-            columnName: middle_name
+            columnName: first_name
             newDataType: varchar(100)
             constraints:
-              nullable: true
+              nullable: false
+        - modifyDataType:
+            tableName: person
+            columnName: last_name
+            newDataType: varchar(100)
+            constraints:
+              nullable: false
+
+
+
 
 

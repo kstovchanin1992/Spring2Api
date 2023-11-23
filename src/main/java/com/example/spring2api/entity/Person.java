@@ -18,19 +18,24 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "first_name")
+
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "middle_name", nullable = true)
+
+    @Column(name = "middle_name")
     private String middleName;
+
     @Column(name = "passport_number")
     private String passportNumber;
+
     @Column(name = "passport_series")
     private String passportSeries;
 }
-

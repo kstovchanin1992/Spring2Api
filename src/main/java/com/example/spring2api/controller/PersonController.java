@@ -2,7 +2,9 @@ package com.example.spring2api.controller;
 
 import com.example.spring2api.dto.PersonDto;
 import com.example.spring2api.entity.Person;
+import com.example.spring2api.kafka.KafkaSender;
 import com.example.spring2api.service.PersonService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,14 +23,22 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private KafkaSender kafkaSender;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
     public PersonController(PersonService personService) {
         this.personService = personService;
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> savePerson(@RequestBody PersonDto personDto) {
+    public ResponseEntity<String> savePerson(@RequestBody PersonDto personDto) throws Exception {
         personService.savePerson(personDto);
-        return ResponseEntity.ok("Person saved successfully");
+        String jsonMessage = objectMapper.writeValueAsString(personDto);
+        kafkaSender.send("ru-sokolov-person", jsonMessage);
+        return ResponseEntity.ok("Person saved and sent to Kafka successfully");
     }
 
     @GetMapping

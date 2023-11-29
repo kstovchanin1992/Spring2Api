@@ -44,24 +44,6 @@ databaseChangeLog:
             newDataType: varchar(100)
             constraints:
               nullable: false
-  - changeSet:
-      id: "create-changelog"
-      author: Sergey
-      changes:
-        - createTable:
-            tableName: changelog
-            columns:
-              - column:
-                  name: id
-                  type: uuid
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: data
-                  type: text
-
-
 
 
 

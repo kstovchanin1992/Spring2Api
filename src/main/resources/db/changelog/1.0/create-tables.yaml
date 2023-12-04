@@ -44,3 +44,4 @@ databaseChangeLog:
             newDataType: varchar(100)
             constraints:
               nullable: false
+
